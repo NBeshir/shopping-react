@@ -25,9 +25,12 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark mt-20" id="navigation">
+    <header class="header">
+      <div class="overlay"></div>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-dark mt-20 sticky-top " id="navigation">
       <a class="navbar-brand" href="#"
-        ><img src="img/logo.png" height="130" width="130" alt="Website Logo"
+       ><img src="img/logo.png" class="logo"  alt="Website Logo"
       /></a>
       <button
         class="navbar-toggler"
@@ -46,7 +49,7 @@
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white col" href="#" data-value="about"
+            <a class="nav-link text-white col" href="#about" data-value="about"
               >About Us</a
             >
           </li>
@@ -100,7 +103,7 @@
     </div>
     <div class="container">
       <div class="row row-content">
-        <div class="card col col-md-9 header mx-auto text-center pt-5 mr-1">
+        <div class="card col col-md-9 head mx-auto text-center pt-5 pb-0 panel first ">
           <!--<img class="card-img-top" src="..." alt="Card image cap">-->
           <div class="card-body col">
             <h5 class="card-title text-white">We Import Quality Coffee</h5>
@@ -112,12 +115,12 @@
         </div>
         <!--end of card-->
         <div class="card col col-md-2 featured">
-          <img class="card-img-top" src="img/yirga.jpg" alt="Card image cap" />
+          <img class="card-img-top" src="img/yirga.jpg"  alt="Card image cap" />
           <div class="card-body">
             <h5 class="card-title blink">Coming Soon...</h5>
             <p class="card-text">
-              We are so excited to bring you Ethiopia's finest, Yirgachaffe just
-              in about two weeks! Stay Tuned!
+              We are so excited to bring you Ethiopia's finest, <em>Yirgachaffe</em> 
+              very soon! Stay Tuned!
             </p>
           </div>
         </div>
@@ -134,7 +137,7 @@
   </div>-->
     <!--carousel starts-->
     <div class="container">
-      <div class="row">
+      <div class="row ">
         <div class="col">
           <div
             id="carouselExampleIndicators"
@@ -210,13 +213,14 @@
         </div>
         <!--end of first column-->
       </div>
+     
       <!--end of first row-->
-      <div class="row align-self-center aboutValue">
+      <div class="row align-self-center aboutValue" id="about">
         <div class="col col-sm-6">
-          <div class="card cardAbout mx-auto h-100 m-0" id="about">
+          <div class="card cardAbout mx-auto h-100 m-0 panel second" >
             <div class="card-body">
-              <h1 class="text-center card-header">About Us</h1>
-              <p class="card-text p-5">
+              <h1 class="text-center card-header text-white">About Us</h1>
+              <p class="card-text p-5 text-white">
                 We are a private company located in Pleasanton, CA. Our Company
                 imports quality coffee from Ethiopia, a country located in the
                 Eastern part of Africa. We bring your coffee directly from the
@@ -229,10 +233,10 @@
         </div>
         <!--end of second column-->
         <div class="col col-sm-6">
-          <div class="card cardValues mx-auto h-100  m-0" id="values">
+          <div class="card cardValues mx-auto h-100  m-0 panel third" id="values">
             <div class="card-body">
-              <h1 class="text-center card-header">Our values</h1>
-              <p class="card-text p-5">
+              <h1 class="text-center card-header text-white">Our values</h1>
+              <p class="card-text p-5 text-white">
                 Although we are a business and have to make profit, we also have
                 strongly held values. We believe that apart from making money,
                 we also have a purpose to serve people in our community. We pay
@@ -251,39 +255,39 @@
     </div>
     <!--end of container-->
     <div class="container">
-      <div class="row formBox mt-5">
+      <div class="row formBox mt-5  p-5 panel forth" id="contact">
         <div class="col-12">
-          <h2 class="text-center">Contact Us</h2>
+          <h2 class="text-center font-weight-bold">Contact Us</h2>
           <hr />
         </div>
         <div class="col-md-10">
           <form>
             <div class="form-group row">
               <label
-                for="exampleFormControlInput1"
-                class="col-form-label col-md-2"
+                for="fName"
+                class="col-form-label col-md-2 text-white "
                 >First Name</label
               >
               <div class="col-md-10">
                 <input
                   type="text"
                   class="form-control p-3"
-                  id="exampleFormControlInput1"
+                  id="fName"
                   placeholder="First Name"
                 />
               </div>
             </div>
             <div class="form-group row">
               <label
-                for="exampleFormControlInput1"
-                class="col-form-label col-md-2"
+                for="lName"
+                class="col-form-label col-md-2 text-white"
                 >Last Name</label
               >
               <div class="col-md-10">
                 <input
                   type="text"
                   class="form-control p-3"
-                  id="exampleFormControlInput1"
+                  id="lName"
                   placeholder="Last Name"
                 />
               </div>
@@ -291,15 +295,15 @@
 
             <div class="form-group row">
               <label
-                for="exampleFormControlInput1"
-                class="col-form-label col-md-2"
+                for="email"
+                class="col-form-label col-md-2 text-white"
                 >Email address</label
               >
               <div class="col-md-10">
                 <input
                   type="email"
                   class="form-control p-3"
-                  id="exampleFormControlInput1"
+                  id="email"
                   placeholder="name@example.com"
                 />
               </div>
@@ -307,14 +311,14 @@
 
             <div class="form-group row">
               <label
-                for="exampleFormControlTextarea1"
-                class="col-form-label col-md-2"
+                for="message"
+                class="col-form-label col-md-2 text-white "
                 >Message</label
               >
               <div class="col-md-10">
                 <textarea
                   class="form-control form-control-lg"
-                  id="exampleFormControlTextarea1"
+                  id="message"
                   rows="3"
                 ></textarea>
               </div>
@@ -347,7 +351,7 @@
 
     <footer class="text-center text-lg">
       <!-- Grid container -->
-      <div class="container p-4">
+      <div class="container p-4 panel fifth">
         <!--Grid row-->
         <div class="row footerBox">
           <!--Grid column-->

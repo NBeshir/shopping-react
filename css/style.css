@@ -1,34 +1,63 @@
 * {
   box-sizing: border-box;
   font-family: Georgia, "Times New Roman", Times, serif;
+  font-size:1rem;
 }
 
   
 html, body {
+  width:100%;
+  height:100%;
   margin: 0;
   padding:0;
  }
-.back {
-  background-image: url("../img/rawCoffee.jpg");
 
+.panel {
+  /*background-image: url("../img/coffee.jpg");*/
+  width:100%;
+  height:100%;
+  background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
 }
-
-.overlay {
+.panel.first {
+  background-image: url('../img/coffee.jpg');
+}
+.panel.second {
+  background-image: url('../img/coffee3.jpg');
+}
+.panel.third {
+  background-image: url('../img/coffee3.jpg');
+}
+.panel.forth {
+  background-image: url('../img/coffeecover.jpg');
+}
+.panel.forth {
+  background-image: url('../img/coffeecover2.jpg');
+}
+/*.overlay {
   position: absolute;
-  height:auto;
-  min-width: 100%;
+  min-height:100%;
+  min-width:100%;
+  
   left: 0;
   top: 0;
+ 
   background: rgba(244, 244, 244, 0.75);
-}
-
+}*/
+/*background-color: #C39B77;*/
 .navbar {
   margin-top: 10px;
  
   line-height: 40px;
+}
+
+.navbar .logo{
+  height: auto;
+  width: auto;
+  max-height: 72px;
+  max-width: 250px;
 }
 
 .navbar-nav li {
@@ -49,6 +78,12 @@ html, body {
   
   margin-left: 20px;
 }
+
+.navbar .navbar-toggler-icon{
+  background-color: #A9A9A9;
+  color:white;
+}
+
 /*.ulLeft  {
  margin-left:150px;
 }
@@ -71,10 +106,7 @@ html, body {
   background-color:#b33c00;
 }
 
-/*.header{
-  min-width: 100%;
-  
-}*/
+
 .loader{
   width:100%;
   height:100%;
@@ -89,11 +121,15 @@ html, body {
   height:100%;
   background:url("../img/load.gif") center center no-repeat;
 }
-.header {
+.head {
  
-  background-color:#662200;
+  background-color:#d8642a;
+  margin-top: 30px;
 }
-.header h5 {
+.head .card-body{
+  margin-top:40px;
+}
+.head h5 {
   font-size: 30px;
 }
 .carousel {
@@ -122,10 +158,16 @@ margin-top:30px;
 }*/
 .featured{
   width: 15%;
+  margin-top: 30px;
  
 }
+.featured p{
+ color:#662200;
+ font-size: 1rem;
+ text-align: center;
+}
 .blink{
-  animation: blinker 1s linear infinite;
+  animation: blinker 2s linear infinite;
 }
 
 @keyframes blinker {
@@ -134,6 +176,9 @@ margin-top:30px;
   }
 }
 
+#contact label{
+  font-size:1.3rem;
+}
 .footerBox {
   position: absolute;
  left:0px;
@@ -150,13 +195,14 @@ margin-top:30px;
 }
 @media only screen and (max-width: 625px) {
   body {
-   background-color: rgba(15, 244, 252, 0.801);
-    max-width: 100%;
+  margin:0 auto;
+    max-width:100%;
     height:auto;
   }
   .carousel {
     margin-top: 20%;
   }
+  
 .collapse ul li{
   margin:0px;
   background-color:#662200;
@@ -178,5 +224,9 @@ margin-top:30px;
     text-align: center;
     padding: 0px;
     
+  }
+  .footerBox div{
+    margin:0 auto;
+    padding:5px;
   }
 }

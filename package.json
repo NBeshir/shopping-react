@@ -15,7 +15,8 @@
     "bootstrap-social": "^5.1.1",
     "font-awesome": "^4.7.0",
     "get-google-fonts": "^1.2.2",
-    "jquery": "^3.5.1"
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1"
   },
   "devDependencies": {
     "lite-server": "^2.6.1"
