@@ -49,17 +49,22 @@ html, body {
 /*background-color: #C39B77;*/
 .navbar {
   margin-top: 10px;
- 
+  
+  width:100%;
   line-height: 40px;
 }
 
 .navbar .logo{
   height: auto;
   width: auto;
-  max-height: 72px;
-  max-width: 250px;
+  max-height: 100px;
+  max-width: 200px;
+  line-height:100px;
+ 
+
 }
 
+ 
 .navbar-nav li {
  
   
@@ -90,13 +95,13 @@ html, body {
 .ulRight{
   margin-right: 50px;
 }*/
-.collapse ul  {
+/*.collapse ul  {
  
   margin-left :10px;
-}
+}*/
 
 
-.dropdown .dropdown-menu a {
+.dropdown  .dropdown-menu a {
   background-color:#662200;
   color:#fff;
   
@@ -199,32 +204,53 @@ margin-top:30px;
     max-width:100%;
     height:auto;
   }
+
+  .navbar .logo{
+    display:none;
+  
+  }
+  .collapse .dropdown-menu  {
+   position:relative;
+   display:block;
+   right:20px;
+   
+  }
+  .collapse .dropdown a{
+  
+  
+ 
+  text-decoration: none;
+  display: block;
+  }
   .carousel {
     margin-top: 20%;
   }
   
-.collapse ul li{
-  margin:0px;
-  background-color:#662200;
-  text-align: center;
-}
-  .collapse ul, .collapse .dropdown-menu a {
+
+  .collapse ul  {
     display: block;
-    width: 30%;
+    width: 40%;
     z-index:1;
     position: absolute;
     
-    right:0px;
+    right:20px;
+    
    
   }
   
-  .collapse ul a:hover {
-   
-   
-    text-align: center;
-    padding: 0px;
+  .collapse ul li{
+    margin:0px;
     
+    text-align: center;
+
   }
+  /*.collapse ul li:hover{
+    margin:0px;
+    background-color: cadetblue;
+    text-align: center;
+  }*/
+  
+  
   .footerBox div{
     margin:0 auto;
     padding:5px;

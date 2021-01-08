@@ -11,7 +11,29 @@ $(function(){
     
 //    })
 //$('.header').height($(window).height());
+$('.dropdown').click(function(){
+    $('#dropdown-menu ').css("display","block");
+   
+   
+
+
+
 
 })
+$('.dropdown').mouseout(function(){
+    $('#dropdown-menu ').css("display","none");
+   
+   
+
+
+
+
+})
+$('.dropdown').click(function(){
+    $('.dropdown ').css("background","#662200")
+})
+
+})
+
 
 
