@@ -12,30 +12,7 @@ html, body {
   padding:0;
  }
 
-.panel {
-  /*background-image: url("../img/coffee.jpg");*/
-  width:100%;
-  height:100%;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
-}
-.panel.first {
-  background-image: url('../img/coffee.jpg');
-}
-.panel.second {
-  background-image: url('../img/coffee3.jpg');
-}
-.panel.third {
-  background-image: url('../img/coffee3.jpg');
-}
-.panel.forth {
-  background-image: url('../img/coffeecover.jpg');
-}
-.panel.forth {
-  background-image: url('../img/coffeecover2.jpg');
-}
+
 /*.overlay {
   position: absolute;
   min-height:100%;
@@ -89,16 +66,6 @@ html, body {
   color:white;
 }
 
-/*.ulLeft  {
- margin-left:150px;
-}
-.ulRight{
-  margin-right: 50px;
-}*/
-/*.collapse ul  {
- 
-  margin-left :10px;
-}*/
 
 
 .dropdown  .dropdown-menu a {
@@ -180,7 +147,44 @@ margin-top:30px;
     opacity: 0;
   }
 }
+.panel {
+  /*background-image: url("../img/coffee.jpg");*/
+  width:100%;
+  height:100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+.panel.first {
+  background-image: url('../img/coffee.jpg');
+}
+.panel.second {
+  background-image: url('../img/coffee3.jpg');
+}
+.panel.third {
+  background-image: url('../img/coffee3.jpg');
+}
+.panel.forth {
+  background-image: url('../img/coffee.jpg');
+}
+.panel.fifth {
+  background-image: url('../img/coffeecover2.jpg');
+}
+.panel.sixth {
+  background-image: url('../img/coffee2.jpg');
+}
+#accordion{
+  background-color:#b33c00;
+  width:66%;
+  margin:0 auto;
+  padding:30px;
+}
 
+.panel-title a{
+  font-size:1.5rem;
+  color:#fff;
+}
 #contact label{
   font-size:1.3rem;
 }
@@ -209,13 +213,13 @@ margin-top:30px;
     display:none;
   
   }
-  .collapse .dropdown-menu  {
+  /* .collapse .dropdown-menu  {
    position:relative;
    display:block;
    right:20px;
    
-  }
-  .collapse .dropdown a{
+  } */
+  /* .collapse .dropdown a{
   
   
  
@@ -224,35 +228,44 @@ margin-top:30px;
   }
   .carousel {
     margin-top: 20%;
-  }
+  } */
   
 
-  .collapse ul  {
+  /* .collapse ul  {
     display: block;
     width: 40%;
     z-index:1;
     position: absolute;
     
     right:20px;
-    
+
    
   }
-  
-  .collapse ul li{
+   */
+   .collapse ul li{
     margin:0px;
     
     text-align: center;
 
-  }
-  /*.collapse ul li:hover{
+  } 
+  .collapse ul a:hover{
     margin:0px;
-    background-color: cadetblue;
+    background-color: #b33c00;;
     text-align: center;
-  }*/
+  }
   
   
   .footerBox div{
+    min-width:100%;
     margin:0 auto;
     padding:5px;
   }
+}
+/*login page*/
+
+.cart-total{
+  float:right;
+}
+.cart-header{
+  margin:0 auto;
 }

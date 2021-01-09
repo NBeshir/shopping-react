@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nature Coffee Importer</title>
-    <link rel="shortcut icon" href="img/icons8-coffee-beans-48.png" />
+    <link rel="icon" href="../img/coffee-beans-flat.png" />
+    
     <link
       rel="stylesheet"
       href="node_modules/bootstrap/dist/css/bootstrap.min.css"
@@ -56,13 +57,30 @@
           <li class="nav-item">
             <a
               class="nav-link text-white col"
+              href="#values"
+              data-value="values"
+              >Our Values</a
+            >
+          </li>
+          
+          <li class="nav-item">
+            <a
+              class="nav-link text-white col"
+              href="#variety"
+              data-value="variety"
+              >Coffee Varieties</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link text-white col"
               href="#contact"
               data-value="contact"
               >Contact Us</a
             >
           </li>
 
-          <li class="nav-item dropdown">
+          <!--<li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle text-white"
               href="#"
@@ -82,14 +100,14 @@
               <a class="dropdown-item m-auto" href="#">Harar</a>
               <a class="dropdown-item m-auto" href="#">Jimma</a>
             </div>
-          </li>
+          </li>-->
           <li class="nav-item">
             <a
               class="nav-link text-white col"
-              href="#"
+              href="loginPage/login.html"
               data-value="login"
               id="login"
-              >Log in</a
+              >Shop</a
             >
           </li>
         </ul>
@@ -254,8 +272,55 @@
       <!--end of second row-->
     </div>
     <!--end of container-->
+    <div class="panel-group mt-5 " id="accordion">
+      <div class="panel panel-default  " id="variety">
+        <div><h1 class="text-center">Coffee Varieties</h1></div>
+        <hr/>
+        <div class="panel-heading text-center">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" class="text-decoration-none" data-parent="#accordion" href="#collapse1">
+            Limu</a>
+          </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse in">
+          <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat.</div>
+        </div>
+      </div>
+      <div class="panel panel-default ">
+        <div class="panel-heading">
+          <h4 class="panel-title text-center">
+            <a data-toggle="collapse" class="text-decoration-none" data-parent="#accordion" href="#collapse2">
+            Harrar</a>
+          </h4>
+        </div>
+        <div id="collapse2" class="panel-collapse collapse">
+          <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat.</div>
+        </div>
+      </div>
+      <div class="panel panel-default ">
+        <div class="panel-heading">
+          <h4 class="panel-title text-center">
+            <a data-toggle="collapse" class="text-decoration-none" data-parent="#accordion" href="#collapse3">
+            Kaffa</a>
+          </h4>
+        </div>
+        <div id="collapse3" class="panel-collapse collapse">
+          <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat.</div>
+        </div>
+      </div>
+    </div>
+    </div><!--end of accordion-->
     <div class="container">
-      <div class="row formBox mt-5  p-5 panel forth" id="contact">
+      <div class="row formBox mt-5  p-5 panel fifth" id="contact">
         <div class="col-12">
           <h2 class="text-center font-weight-bold">Contact Us</h2>
           <hr />
@@ -351,7 +416,7 @@
 
     <footer class="text-center text-lg">
       <!-- Grid container -->
-      <div class="container p-4 panel fifth">
+      <div class="container p-4 ">
         <!--Grid row-->
         <div class="row footerBox">
           <!--Grid column-->
