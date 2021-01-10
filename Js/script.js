@@ -7,7 +7,9 @@ $(window).on("load", function () {
 // } else {
 //   ready();
 // }
-
+function googleTranslateElementInit(){
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
 
   var removeCartItemButtons = document.getElementsByClassName("btn-danger");
 
@@ -143,7 +145,7 @@ $(window).on("load", function () {
     total = Math.round(total * 100) / 100;
     document.getElementsByClassName("cart-total-price")[0].innerText =
       "$" + total;
-      alert(total)
+     
   }
   
 

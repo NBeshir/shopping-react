@@ -213,38 +213,18 @@ margin-top:30px;
     display:none;
   
   }
-  /* .collapse .dropdown-menu  {
-   position:relative;
-   display:block;
-   right:20px;
+  
    
-  } */
-  /* .collapse .dropdown a{
-  
-  
- 
-  text-decoration: none;
-  display: block;
-  }
-  .carousel {
+  /*.carousel {
     margin-top: 20%;
   } */
   
 
-  /* .collapse ul  {
-    display: block;
-    width: 40%;
-    z-index:1;
-    position: absolute;
-    
-    right:20px;
-
    
-  }
-   */
-   .collapse ul li{
+   
+  .collapse ul li{
     margin:0px;
-    
+    padding:0px;
     text-align: center;
 
   } 
@@ -268,4 +248,11 @@ margin-top:30px;
 }
 .cart-header{
   margin:0 auto;
+}
+.btn-purchase{
+margin-left:50%;
+margin-top:20px;
+}
+.container-section{
+  margin-left:150px;
 }
