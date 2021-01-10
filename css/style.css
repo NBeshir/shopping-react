@@ -195,14 +195,19 @@ margin-top:30px;
  left:0px;
  right:0px;
   background-color:#662200;
+  color:hsl(120,0%,50%);
+ 
   width:100%;
   height:auto;
   margin:0px;
  padding: 25px 0px;
 }
 .footerBox a {
-  color:#0C0B0B;
+  color:hsl(120,0%,50%);
   margin:5px;
+ 
+  
+
 }
 @media only screen and (max-width: 625px) {
   body {

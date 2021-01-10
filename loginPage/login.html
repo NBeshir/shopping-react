@@ -94,10 +94,12 @@
     <div class="header">
       <div class="overlay"></div>
     </div>
-    <div class="container container-section ">
-      <div class="row mx-auto shop-items">
-        <div class=" shop-item">
-          <div class="card " style="width: 18rem">
+    <div class="container container-section mx-auto">
+      <div class="row mt-5 shop-items">
+        <!--<div class="shop-items col">-->
+        <!--<div class=" shop-item">-->
+        <div class="col shop-item">
+          <div class="card shop-item" style="width: 18rem">
             <img
               class="card-img-top shop-item-image"
               src="../img/sidamo.jfif"
@@ -111,9 +113,11 @@
               >
             </div>
           </div>
+
           <!--end of card 1-->
         </div>
-        <div class=" shop-item">
+        <!--<div class="shop-item">-->
+        <div class="col shop-item">
           <div class="card" style="width: 18rem">
             <img
               class="card-img-top shop-item-image"
@@ -130,6 +134,7 @@
           </div>
         </div>
         <!--end of col 2-->
+      <!--  <div class="col shop-item">-->
         <div class="col shop-item">
           <div class="card" style="width: 18rem">
             <img
@@ -147,8 +152,9 @@
           </div>
         </div>
       </div>
-      <div class="row mt-5">
-        <div class="col">
+      <!--end of row one-->
+      <div class="row mt-5 shop-items">
+        <div class="col shop-item">
           <div class="card" style="width: 18rem">
             <img
               class="card-img-top shop-item-image"
@@ -164,10 +170,10 @@
             </div>
           </div>
         </div>
-        <div class="col">
+        <div class="col shop-item">
           <div class="card" style="width: 18rem">
             <img
-              class="card-img-top"
+              class="card-img-top shop-item-image"
               src="../img/harar.jfif"
               alt="Card image cap"
             />
@@ -180,7 +186,7 @@
             </div>
           </div>
         </div>
-        <div class="col">
+        <div class="col shop-item">
           <div class="card" style="width: 18rem">
             <img
               class="card-img-top shop-item-image"
@@ -191,7 +197,7 @@
               <h5 class="card-title shop-item-title">Harrar Coffee</h5>
               <span class="card-text shop-item-price">$10.99</span>
               <a href="#harar" class="btn btn-primary shop-item-button"
-                >Add to cart</a
+                >Add to cart  </a
               >
             </div>
           </div>
@@ -200,22 +206,24 @@
     </div>
 
     <div class="container mt-5" id="yirga">
-      <h2 class="section-header text-center" id="limu">CART</h2>
-      <div class="row mt-5" id="harar">
-        <span class="col cart-item cart-header cart-column" id="jinka"
-          >ITEM</span
-        >
-        <hr />
-        <span class="col cart-price cart-header cart-column" id="sida"
-          >PRICE</span
-        >
-        <hr />
-        <span class="col cart-quantity cart-header cart-column" id="kaffa"
-          >QUANTITY</span
-        >
-        <hr />
+      <h2 class="section-header text-center" id="limu">CART <i class="fa fa-shopping-cart"></i></h2>
+      <div class="row cart-row mt-5" id="harar">
+            <span class="col cart-item cart-header cart-column" id="jinka"
+              >ITEM</span
+            >
+            <hr />
+            <span class="col cart-price cart-header cart-column" id="sida"
+              >PRICE</span
+            >
+            <hr />
+            <span class="col cart-quantity cart-header cart-column" id="kaffa"
+              >QUANTITY</span
+            >
+            <hr />
       </div>
-      <div class="cart-items"></div>
+      <div class="cart-items">
+        <div class="cart-row"></div>
+      </div>
       <div class="cart-total">
         <strong class="cart-total-title">Total</strong>
         <span class="cart-total-price">$0</span>
