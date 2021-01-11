@@ -75,8 +75,8 @@ function googleTranslateElementInit(){
 
   function addItemToCart(title, price, imageSrc) {
     var cartRow = document.createElement("div"); //create an empty div by cart-items
-    cartRow.classList.add(".cart-row"); // added cart-row class to the new div
-    var cartItems = document.getElementsByClassName(".cart-items")[0];
+    cartRow.classList.add("cart-row"); // added cart-row class to the new div
+    var cartItems = document.getElementsByClassName("cart-items")[0];
     var cartItemNames = document.getElementsByClassName("cart-item-title");
     for (var i = 0; i < cartItemNames.length; i++) {
       if (cartItemNames[i].innerText == title) {
@@ -104,14 +104,14 @@ function googleTranslateElementInit(){
                  
                     
                         <input class="cart-quantity-input" type="number" value="1" />
-                        <button class="btn btn-danger" type="button">REMOVE</button>
+                        <button class="btn btn-danger" type="button"><i class="fa fa-trash"></i></button>
                    
                 </div>
         
                 
                   
         
-  `;
+  `
 
     cartRow.innerHTML = cartRowContents;
     cartItems.append(cartRow);
