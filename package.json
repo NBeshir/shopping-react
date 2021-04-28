@@ -5,20 +5,31 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lite": "lite-server",
-    "start": "npm run lite"
+    "start": "node server.js",
+    "server": "nodemon server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\"\"npm run client\""
   },
   "author": "Nejmiya Beshir",
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^4.5.3",
     "bootstrap-social": "^5.1.1",
+    "concurrently": "^6.0.2",
+    "config": "^3.3.6",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
     "font-awesome": "^4.7.0",
     "get-google-fonts": "^1.2.2",
     "jquery": "^3.5.1",
-    "popper.js": "^1.16.1"
+    "mongoose": "^5.12.5",
+    "mongoose-currency": "^0.2.0",
+    "popper.js": "^1.16.1",
+    "stripe": "^8.130.0"
   },
   "devDependencies": {
-    "lite-server": "^2.6.1"
+    "dotenv": "^8.2.0",
+    "lite-server": "^2.6.1",
+    "nodemon": "^2.0.7"
   }
 }
