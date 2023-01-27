@@ -1,3 +1,7 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat&family=Roboto:wght@100&family=Sacramento&display=swap');
+
+
 * {
   box-sizing: border-box;
   /*font-family: Lobster;*/
@@ -271,4 +275,285 @@ hr {
 }
 .cart-cut-price {
   margin-top: 46px;
+}
+
+
+
+/* Sign in component */
+
+.sign-in h1{
+  font-size: 18px;
+font-family: 'Roboto', sans-serif;
+  font-style: normal;
+}
+.sign-in h3{
+  font-size: 15px;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+}
+h2{
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  color: #000;
+ 
+}
+.sign-in{
+  width:450px;
+  height:auto;
+  border: 1px solid gray;
+  margin: 50px auto;
+  border-radius: 5%;
+ padding: 10px;
+  background-color: rgb(252,252,252);
+
+}
+
+.sign-in h1, h2{
+  font-size: 18px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-style: normal;
+}
+
+.formLabel{
+ width:27%;
+font-weight: 500;
+
+ text-align: left;
+ margin-top:15px;
+  
+}
+.formInput{
+  width:100%;
+ margin-left:7px;
+ margin-top: 10px;
+padding:13px;
+ border: 1px solid #ccc;
+ border-radius: 7px;
+font-size: 15px;
+ box-shadow: 0px 3px 15px 5px rgba(0,0,0,0.2);
+ /* box-shadow: 5px 6px 10px 10px rgb(207,207,207); */
+ text-align:center;
+
+
+}
+.form-group{
+
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: left;
+  width: 350px;
+  margin: 30px 5px 0px 30px ;
+ 
+ 
+}
+
+.submit-button{
+  font-size: large;
+  width:80%;
+  text-align: center;
+  border: 1px solid gray;
+  border-radius:5px;
+  transition: 0.5s ease;
+
+  margin:40px 0px 10px 0px;
+  background-color:#0275d8;
+ 
+  color:#fff;
+  cursor: pointer;
+
+}
+.submit-button:hover{
+  background-color: #888888;
+}
+.signup-link{
+
+text-decoration: none;
+
+cursor: pointer;
+color: #4169e1 ;
+
+}
+p{
+  font-size: 20px;
+}
+.forgot-password{
+  text-decoration: none;
+  font-size: 18px;
+  cursor: pointer;
+  color:#000;
+}
+
+/* sign up component */
+
+
+.sign-up{
+  width:450px;
+     height:auto;
+     border: 1px solid gray;
+     margin: 50px auto;
+     border-radius: 5%;
+     background-color: rgb(252,252,252);
+     /* background-image:linear-gradient(to right, orange,yellow,orange); */
+    
+  
+    
+ }
+ .sign-up h1{
+     font-size: 18px;
+     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+     font-style: normal;
+ }
+ .sign-up h3{
+     font-size: 15px;
+     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+     font-style: normal;
+ }
+ 
+ .formLabel{
+    width:22%;
+   font-weight: 200;
+   
+    text-align: left;
+     
+ }
+ .formInput{
+     width:50%;
+    margin-left:30px;
+    padding:8px;
+    border-radius: 3px;
+   
+    /* box-shadow: 0px 3px 15px rgba(0,0,0,0.2); */
+    box-shadow: 11px 12px 13px 12px rgb(207,207,207);
+    text-align: left;
+   
+ }
+ .form-group{
+   
+     display:flex;
+     flex-direction: row;
+     justify-content: center;
+     align-items: left;
+     width: 400px;
+     margin: 30px auto;
+     padding:5px;
+    
+ }
+ .submit-button{
+     font-size: 24px;
+     width:400px;
+     height:50px;
+     text-align: center;
+     border: 1px solid gray;
+     border-radius:5px;
+    
+    
+     margin:40px 0px 10px 0px;
+     background-color:#0275d8;
+     color:#fff;
+     cursor: pointer;
+ 
+ }
+ .submit-button:hover{
+    
+     background-color: #888888;
+     transition: 0.5s ease;
+ }
+ .signin-link{
+ text-decoration: none;
+ 
+ color: #4169e1 ;
+ cursor: pointer;
+ }
+ 
+ 
+ .message{
+     color:red;
+     font-size: 15px;
+     font-weight:600;
+    margin-left:10px;
+ 
+ }
+ 
+ #skills{
+    
+ }
+ .form{
+    
+ }
+ .formLabel-select{
+   
+ }
+ 
+ .select-box{
+ 
+ }
+
+
+ .row{
+  display:flex;
+  justify-content: space-between;
+  
+}
+.col-1{
+  flex:1;
+}
+.col-2{
+  flex:2;
+}
+.block{
+  background-color: #e0e0e0;
+  padding:1rem;
+  margin:0.5rem;
+  border-radius: 0.5rem;
+}
+.row.center{
+  align-items:center;
+}
+img.small{
+  max-height:8rem;
+  
+}
+button.checkout{
+  font-size: 0.8rem;
+  padding:0.2rem;
+  margin:0.1rem;
+  border:0.1rem #404040 solid;
+  background-color: #f0c040;
+  width:100%;
+  cursor: pointer;
+}
+button.add {
+  background-color: #40c0f0;
+  width: 1.5rem;
+}
+button.remove {
+  background-color: #f04040;
+  width: 1.5rem;
+}
+button.badge {
+  background-color: #f04040;
+  border: none;
+  color: #ffffff;
+  width: 1.5rem;
+}
+.close-modal {
+  position: absolute;
+  right: 1rem;
+  top: 2.5rem;
+  z-index: 1000;
+}
+/*item details*/
+
+.item-details{
+  width: 50%;
+  height:500px;
+  display:flex;
+  flex-direction: column;
+  margin: 50px auto;
+}
+
+.cart-row{
+  width:50%;
+ 
 }

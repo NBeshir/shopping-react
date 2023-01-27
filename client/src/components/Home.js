@@ -1,4 +1,6 @@
 import React, { Fragment } from "react";
+import "../App.css";
+import { Link } from "react-router-dom";
 // import "/images/coffeebeans.jpg";
 // import "/images/coffeewash.jpg";
 // import "/images/rawCoffee.jpg";
@@ -9,83 +11,24 @@ import React, { Fragment } from "react";
 //   "../images/coffeebeans.jpg",
 //   "../images/rawCoffee.jpg",
 // ];
+
+import Navbar from './Navbar';
+import Header  from './Header';
+import Footer from './Footer';
+import CarouselComponent from './CarouselComponent';
+
+
 const Home = () => {
   return (
+   
     <Fragment>
+      
+      <Header/>
+      <CarouselComponent/>
       <div className="container">
-        <div className="row">
-          <div className="col">
-            <div
-              id="carouselExampleIndicators"
-              className="carousel slide w-75 mx-auto"
-              data-ride="carousel"
-            >
-              <ol className="carousel-indicators">
-                <li
-                  data-target="#carouselExampleIndicators"
-                  data-slide-to="0"
-                  className="active"
-                ></li>
-                <li
-                  data-target="#carouselExampleIndicators"
-                  data-slide-to="1"
-                ></li>
-                <li
-                  data-target="#carouselExampleIndicators"
-                  data-slide-to="2"
-                ></li>
-              </ol>
-              <div className="carousel-inner">
-                <div className="carousel-item active">
-                  <img
-                    className="d-block w-100 img-fluid "
-                    src="../images/coffeebeans.jpg"
-                    alt="First slide"
-                  />
-                </div>
-                <div className="carousel-item">
-                  <img
-                    className="d-block w-100 img-fluid"
-                    src="../images/coffeewash.jpg"
-                    alt="Second slide"
-                  />
-                </div>
-                <div className="carousel-item">
-                  <img
-                    className="d-block w-100 img-fluid"
-                    src="../images/rawCoffee.jpg"
-                    alt="Third slide"
-                  />
-                </div>
-              </div>
-
-              <a
-                className="carousel-control-prev"
-                href="#carouselExampleIndicators"
-                role="button"
-                data-slide="prev"
-              >
-                <span
-                  className="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span className="sr-only">Previous</span>
-              </a>
-              <a
-                className="carousel-control-next"
-                href="#carouselExampleIndicators"
-                role="button"
-                data-slide="next"
-              >
-                <span
-                  className="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span className="sr-only">Next</span>
-              </a>
-            </div>
-          </div>
-        </div>
+     
+     
+       
 
         <div className="row align-self-center aboutValue" id="about">
           <div className="col col-sm-6">
@@ -240,6 +183,7 @@ const Home = () => {
           </p>
         </div>
       </div>
+      <Footer/>
     </Fragment>
   );
 };
