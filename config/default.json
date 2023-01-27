@@ -1,3 +1,5 @@
 {
-  "mongoURI": "mongodb+srv://mimi2021:mimi2021@cluster0.miz8y.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+  "mongoURI": "mongodb+srv://mimi2021:mimi2021@coffee.omao1.mongodb.net/Coffee?retryWrites=true&w=majority",
+  "jwtSecret" :"thisismydeepsecretthatiamnotgoingtotellyou"
+  // "mongoURI": "mongodb+srv://mimi2021:mimi2021@coffee.omao1.mongodb.net/?retryWrites=true&w=majority"
 }

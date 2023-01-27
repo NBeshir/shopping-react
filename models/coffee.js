@@ -4,7 +4,10 @@ const Schema = mongoose.Schema;
 require("mongoose-currency").loadType(mongoose);
 const Currency = mongoose.Types.Currency;
 
-const cofeeSchema = new Schema({
+const CoffeeSchema = new Schema({
+  // id:{
+  //   type: mongoose.Schema.Types.ObjectId,
+  // },
   name: {
     type: String,
     required: true,
@@ -15,7 +18,11 @@ const cofeeSchema = new Schema({
   },
   image: {
     type: String,
+    required: true
   },
+  // countInStock: { type: Number,
+  //    default: 0, 
+  //    required: true },
 });
 
-module.exports = mongoose.model("Coffee", cofeeSchema);
+module.exports = mongoose.model("Coffee", CoffeeSchema);

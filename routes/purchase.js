@@ -101,4 +101,51 @@ purchaseRouter
 //       })
 //       .catch((err) => next(err));
 //   });
+
+// app.get("/shop", function (req, res) {
+//   fs.readFile("items.json", function (error, data) {
+//     if (error) {
+//       res.status(500).end();
+//     } else {
+//       res.render("shop.ejs", {
+//         items: JSON.parse(data),
+//         stripePublicKey: stripePublicKey
+//       })
+//     }
+//   })
+// })
+
+// app.post("/purchase", function (req, res) {
+//   fs.readFile("items.json", function (error, data) {
+//     if (error) {
+//       res.status(500).end();
+//     } else {
+//       const itemsData = JSON.parse(data);
+//       const itemsArray = itemsData.coffee;
+//       let total = 0;
+
+//       req.body.items.map(function(item) {
+//         const itemData = itemsArray.find(function(i) {
+//           return i.id == item.id;
+//         })
+//         total = total + itemData.price * item.quantity;
+//       });
+//       stripe.charges
+//         .create({
+//           amount: total,
+//           source: req.body.stripeTokenId,
+//           currency: "usd",
+//         })
+//         .then(function () {
+//           console.log("Charge successful");
+//           res.json({ message: "Successfuly purchase items" });
+//         })
+//         .catch(function () {
+//           console.log("Charge Fail");
+//           res.status(500).end();
+//         });
+//     }
+//   });
+// });
+
 module.exports = purchaseRouter;

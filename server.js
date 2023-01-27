@@ -9,11 +9,17 @@ const express = require("express");
 const app = express();
 const fs = require("fs");
 const ejs = require("ejs");
+const cors = require('cors');
 app.use(express.json());
+app.use(cors());
 const stripe = require("stripe")("stripeSecretKey");
 app.set("view engine", "ejs");
 const shopRouter = require("./routes/shop");
+const SignupRouter = require("./routes/SignupRoute");
+const SigninRouter = require("./routes/SigninRoute")
 const purchaseRouter = require("./routes/purchase");
+const orderRouter = require("./routes/orderRoute");
+const userRouter = require("./routes/userRouter");
 const port = process.env.PORT || 5000;
 app.use(express.static("public/")); //stating that all our files are static and in public folder
 //app.use("/css", express.static(__dirname + "public/css"));
@@ -22,55 +28,23 @@ app.use(express.static("public/")); //stating that all our files are static and 
 app.use("/node_modules", express.static(__dirname + "/node_modules"));
 //app.use( express.static( "/node_modules/bootstrap/dist/css/bootstrap.min.css"));
 //app.use( express.static( "/node_modules/bootstrap/dist/js/bootstrap.min.js"));
+
+
+// const corsOptions ={
+//   origin:  'http://localhost:5000',
+// }
+
+
+app.use("/signin", SigninRouter);
 app.use("/shop", shopRouter);
+
+app.use("/register", SignupRouter);
 app.use("/purchase", purchaseRouter);
+app.use("/orders", orderRouter);
+
 const connectDB = require("./config/db");
+const signinRouter = require("./routes/SigninRoute");
 connectDB();
-// app.get("/shop", function (req, res) {
-//   fs.readFile("items.json", function (error, data) {
-//     if (error) {
-//       res.status(500).end();
-//     } else {
-//       res.render("shop.ejs", {
-//         items: JSON.parse(data),
-//         stripePublicKey: stripePublicKey
-//       })
-//     }
-//   })
-// })
-
-// app.post("/purchase", function (req, res) {
-//   fs.readFile("items.json", function (error, data) {
-//     if (error) {
-//       res.status(500).end();
-//     } else {
-//       const itemsData = JSON.parse(data);
-//       const itemsArray = itemsData.coffee;
-//       let total = 0;
-
-//       req.body.items.map(function(item) {
-//         const itemData = itemsArray.find(function(i) {
-//           return i.id == item.id;
-//         })
-//         total = total + itemData.price * item.quantity;
-//       });
-//       stripe.charges
-//         .create({
-//           amount: total,
-//           source: req.body.stripeTokenId,
-//           currency: "usd",
-//         })
-//         .then(function () {
-//           console.log("Charge successful");
-//           res.json({ message: "Successfuly purchase items" });
-//         })
-//         .catch(function () {
-//           console.log("Charge Fail");
-//           res.status(500).end();
-//         });
-//     }
-//   });
-// });
 
 app.listen(port, () => {
   console.log(`server is running on port ${port}`);
