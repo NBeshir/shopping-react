@@ -2,10 +2,11 @@ import React,{useState, useEffect} from 'react'
 import {BrowserRouter , Route, Routes , useLocation, Outlet, useNavigate, useParams,matchPath} from "react-router-dom";
 import Navbar from './Navbar';
 import Header  from './Header';
-import Item from './Items';
+
 import Footer from './Footer';
 import About from './About';
 import Cart from './Cart';
+import CartItem from './CartItem';
 import Contact from './Contact';
 import Home from "./Home";
 import Products from "./Products";
@@ -179,7 +180,7 @@ console.log('token from main new',user)
           clearOrders={clearOrders} 
           orders ={orders } />
               }/>
-          <Route exact path="/shop/:id" element={<Product   /> } />
+          <Route exact path="/shop/:id" element={<CartItem  /> } />
           {/* cartItems={cartItems} addToCart={addToCart } products={products} */}
           {/* <Route  path="/shop/:id" element={<Item cartItems={cartItems} products={products} />} /> */}
          
@@ -189,7 +190,7 @@ console.log('token from main new',user)
         
           </Route> */}
           {/* <Route path="/cart/:id?" element={<Cart />} /> */}
-          <Route exact path="/items" element={ <Item  products={products} cartItems={cartItems}/>}/>
+         
           <Route exact path="/signin" element={ <SignIn />}/>
           <Route exact path="/signup" element={ <SignUp />}/>
           <Route exact path="/orders" element={ <Order/>}/>

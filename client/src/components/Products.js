@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from "react";
 import { Link, useNavigate } from "react-router-dom";
 // import {fetchProducts, addToCart}  from '../redux/ActionCreators';
-import Item from './Items';
+
 import { connect, useDispatch } from 'react-redux';
 import Cart from './Cart';
 import { addToCart } from "../redux/ActionCreators";

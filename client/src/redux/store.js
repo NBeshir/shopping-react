@@ -3,7 +3,7 @@ import {configureStore} from '@reduxjs/toolkit';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import {Products,productDetailsReducer} from './ProductsReducer';
-import {cartItems} from './CartItemsReducer';
+import {cartItems, quantity} from './CartItemsReducer';
 import {Orders} from './OrderReducer';
 import {Login} from './SigninReducer';
 import {composeWithDevTools} from 'redux-devtools-extension';
@@ -24,6 +24,7 @@ import Cookie from 'js-cookie';
 const reducers = combineReducers({
     products:Products,
     cart: cartItems,
+ 
     order: Orders,
  //    login:Login,
     userSignin: userSigninReducer,

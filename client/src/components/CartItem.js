@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import Cart from './Cartt';
+import Cart from './Cart';
 import '../App.css';
 import { baseUrl, Url } from '../shared/baseUrl';
 import { connect, useDispatch} from 'react-redux';
@@ -14,12 +14,12 @@ const CartItem =( {products, cartItems, addToCart, itemData}) =>{
 
   
   const [showCheckout, setShowCheckout] = useState(false)
-  const [input, setInput] = useState(2)
-
+  // const [input, setInput] = useState(itemData.qty)
+ const [input, setInput] = useState(2)
  
   const onChangeHandler = (e) => {
     setInput(e.target.value);
-    adjustQty(itemData.id, e.target.value);
+    // adjustQty(itemData.id, e.target.value);
   };
 
   useEffect(()=>{
@@ -27,28 +27,24 @@ const CartItem =( {products, cartItems, addToCart, itemData}) =>{
   })
 
   return(
-    <div className="item-details text-center w-50">
-      <div>
-      <img  src={itemData.image} alt="" />
+    <div className="item-details text-center ">
+      <div className="">
+        <div>
+        <p>{itemData.productName}</p>
+        </div>
+       
+      <img  src={itemData.image} width="100" height="100" alt="" />
     
               
           
           <div>
-            <p>$15</p>
+            <p>{itemData.price}</p>
           </div>
           <div>
 
-            <div>
-              <label htmlFor="qty">Qty</label>
-              <input min="1" type="number" id="qty" name="qty" value={input}
-              onChange={onChangeHandler}/>
-            </div>
-            <button>
-              <img src="" alt="" />
-            </button>
-          </div> 
-         
+          
           </div>
+      </div>
       </div>
     
   )

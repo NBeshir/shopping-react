@@ -28,29 +28,42 @@ const Cart =({cartItems,products})=> {
   // useEffect(()=>{
   //  console.log('carty', cartItems)
   // })
+  const qtyChangeHandler = (id, qty) => {
+  //  addToCart(id, qty);
+  };
+  const getCartCount = () => {
+    return cartItems.reduce((qty, item) => Number(item.qty) + qty, 0);
+  };
+  const getCartSubTotal = () => {
+    return cartItems
+      .reduce((price, item) => price + item.price * item.qty, 0)
+      .toFixed(2);
+  };
+
  
   return (
-    <div className="block  w-50 m-2 mx-auto">
+    <div className=" w-75 m-2 mx-auto">
 
 
         <div>
             {cartItems.map((item)=>(
                 //  <CartItem/>
-                  <CartItem key={item.id} itemData={item}/> 
+                  <CartItem key={item.id} itemData={item} qtyChangeHandler={qtyChangeHandler}/> 
+                
             ))
           }
           
         </div>
-        {/* <div>
+        <div>
             <h1>Cart Summary</h1>
             <div>
-                <span>Total: ({totalItems} items)</span>
-                <span>$ {totalPrice}</span>
+                <span>Subtotal: ({getCartCount} items)</span>
+                <span>$ {getCartSubTotal}</span>
             </div>
             <button>
                 Proceed to Checkout
             </button>
-        </div> */}
+        </div>
      </div>
 
   )

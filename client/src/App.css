@@ -546,10 +546,10 @@ button.badge {
 /*item details*/
 
 .item-details{
-  width: 50%;
-  height:500px;
-  display:flex;
-  flex-direction: column;
+  width: 20%;
+  height:300px;
+ 
+
   margin: 50px auto;
 }
 

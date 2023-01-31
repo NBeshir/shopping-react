@@ -108,6 +108,7 @@ const product = await Coffee.findOne({
 
 if (product) {
   res.send(product);
+ 
 } else {
   res.status(404).send({ message: 'Product Not Found.' });
 }
@@ -119,16 +120,18 @@ if (product) {
   const {
       product,
       price,
-      quantity,
-      image
+    
+      image,
+      countInStock,
 } = req.body;
 
 
 const cart = await Cart.create({
   product,
   price,
-  quantity,
-  image
+ 
+  image,
+  countInStock
 });
 
 res.status(200).json({

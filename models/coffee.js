@@ -20,9 +20,9 @@ const CoffeeSchema = new Schema({
     type: String,
     required: true
   },
-  // countInStock: { type: Number,
-  //    default: 0, 
-  //    required: true },
+  countInStock: { type: Number,
+     
+     required: true },
 });
 
 module.exports = mongoose.model("Coffee", CoffeeSchema);

@@ -70,10 +70,14 @@ const Navbar = ({countCartItems, cartItems, userSignin,login, userSignout}) => {
     let count = 0;
     cartItems.forEach((item) =>{
       count += item.qty;
+      console.log('cartItems nav', cartItems)
     });
 setCartCount(count)
   },[cartItems, cartCount])
 
+const getCartCount = () => {
+  return cartItems.reduce((qty, item) => Number(item.qty) + qty, 0);
+};
   return (
 
   
@@ -121,20 +125,20 @@ setCartCount(count)
             </li>
           </ul>
           <div className="navbar-text ml-auto">
-          {cartItems.map(item =>{
+          {/* {cartItems.map(item =>{
                   <a href="/signin" role="button" id="loginButton">
                       <i className="fa fa-sign-in"></i> {item.name}
                   
                  </a>
-})}
+})} */}
           <Link to="/cart" role="button" id="loginButton">
              Cart {' '}
           
-               <button className="badge">{cartCount}</button>
+               <span className="badge">{getCartCount()}</span>
             
             </Link >{' '}
-            {userSignin ? (
-               <a href="/signin" role="button" id="loginButton" >{""}
+             {userSignin ? (
+               <a href="/profile" role="button" id="loginButton" >{""}
                <i className="fa fa-sign-in"></i> {userSignin.fname}
              </a>
 
@@ -143,8 +147,10 @@ setCartCount(count)
           <i className="fa fa-sign-in"></i> Sign In{" "} 
         </a>
         }
-           
-           
+            
+           <a href="/signin" role="button" id="loginButton" >
+          <i className="fa fa-sign-in"></i> Sign In{" "} 
+        </a>
 
          
            <a href="/logout" role="button" id="loginButton"  onClick={handleLogout}>
