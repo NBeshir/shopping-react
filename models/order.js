@@ -4,21 +4,33 @@ const Schema = mongoose.Schema;
 require("mongoose-currency").loadType(mongoose);
 const Currency = mongoose.Types.Currency;
 
-const OrderSchema = new Schema(
-    {
+const OrderSchema = new Schema({
+  userId: {
+    type: String,
+},
        
-        email: String,
-        name: String,
-        address: String,
-        total: Number,
-        cartItems: [
-          {
-            _id: String,
-            title: String,
-            price: Number,
-            count: Number,
-          },
-        ],
+     items:[{
+
+      productId: {
+        type: String,
+    },
+    name: String,
+    quantity: {
+        type: Number,
+        required: true,
+        min: [1, 'Quantity can not be less then 1.']
+    },
+    price: Number
+}],
+total: {
+  type: Number,
+  required: true
+},
+date_added: {
+  type: Date,
+  default: Date.now
+}
+        
       },
       {
         timestamps: true,

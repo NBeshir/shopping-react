@@ -7,6 +7,8 @@ import Cart from './Cart';
 import { addToCart } from "../redux/ActionCreators";
 import { cartItems } from "../redux/CartItemsReducer";
 import Product from "./Product";
+import CartSummary from "./CartSummary";
+
 
 
 const mapStateToProps = state => {
@@ -49,12 +51,12 @@ console.log("cartitems shop", cartItems)
 
  },[])
 
- let Price = cartItems.reduce(
-  (acc, item) => acc + item.quantity * item.price,
-  0
-);
+//  let Price = cartItems.reduce(
+//   (acc, item) => acc + item.quantity * item.price,
+//   0
+// );
 
-let totalPrice = Price;
+// let totalPrice = Price;
 
 //  const addToCartHandler = () => {
 
@@ -69,13 +71,15 @@ let totalPrice = Price;
 
         <div className="container content-section mx-auto" id="shop" >
           <div className="row mt-3 shop-items">
-          {products.products.map((product) => (
+          {
+          products.products.length ? products.products.map((product) => (
 
             <Product key={product._id} product={product}/>
           
-          ))}
+          )):<div style={{width:"100%"}}><span className="text-center">No products found. </span></div>}
           
           </div>
+          <CartSummary />
           </div>
 
       </div>

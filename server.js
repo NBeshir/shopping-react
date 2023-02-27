@@ -19,6 +19,7 @@ const SignupRouter = require("./routes/SignupRoute");
 const SigninRouter = require("./routes/SigninRoute")
 const purchaseRouter = require("./routes/purchase");
 const orderRouter = require("./routes/orderRoute");
+const cartRouter = require("./routes/cartRoute");
 const userRouter = require("./routes/userRouter");
 const port = process.env.PORT || 5000;
 app.use(express.static("public/")); //stating that all our files are static and in public folder
@@ -37,6 +38,7 @@ app.use("/node_modules", express.static(__dirname + "/node_modules"));
 
 app.use("/signin", SigninRouter);
 app.use("/shop", shopRouter);
+app.use("/cart", cartRouter);
 
 app.use("/register", SignupRouter);
 app.use("/purchase", purchaseRouter);
@@ -45,6 +47,14 @@ app.use("/orders", orderRouter);
 const connectDB = require("./config/db");
 const signinRouter = require("./routes/SigninRoute");
 connectDB();
+
+
+if(process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+  app.get('*', (req, res) => {
+res.sendFile(path.resolve(__dirname,'client','build','index.html'));
+  });
+}
 
 app.listen(port, () => {
   console.log(`server is running on port ${port}`);

@@ -3,44 +3,50 @@ import * as ActionTypes from './ActionTypes';
  const INITIAL_STATE = {
   
     cartItems: [],
-    // qty:0,
-  currentItem:null 
+    loading:false
+   
 }
      
 
 
 export const cartItems=(state=INITIAL_STATE, action) =>{
 
-      
+ 
+
     
       
     switch (action.type) {
+    
+   
       case ActionTypes.ADD_CART_ITEMS:
 
+    
       const item = action.payload;
-      const doesItemExist = state.cartItems.find((i)=> i.product === item.product);
-      if(doesItemExist){
-        return{
-          ...state,
-          cartItems: state.cartItems.map((i)=> i.product === doesItemExist.product ? item: i)
-         
-
-         
-        };
-
-      }else{
+      console.log('reducer item', item)
+      const product = state.cartItems.find(x => x.product === item.product);
+      if (product) {
         return {
-          ...state, 
-      
-           cartItems:[...state.cartItems, item ],
-          
-
+          cartItems:
+            state.cartItems.map(x => x.product === product.product ? item : x)
+        };
       }
-    };
+      console.log('reducer cart item', state.cartItems)
+      return { cartItems: [...state.cartItems, item] };
+    
+  
+    
+     
 
      
       case ActionTypes.REMOVE_FROM_CART:
-        return { cartItems: action.payload.cartItems };
+        
+       
+        return {
+          ...state,
+          cart: action.payload
+         };
+
+
         case ActionTypes.CART_SAVE_SHIPPING:
           return { ...state, shipping: action.payload };
           case ActionTypes.ADJUST_QTY:
@@ -58,6 +64,7 @@ export const cartItems=(state=INITIAL_STATE, action) =>{
       default:
         return state;
     }
+  };
 
 
 //     case ActionTypes.REMOVE_FROM_CART:
@@ -86,4 +93,4 @@ export const cartItems=(state=INITIAL_STATE, action) =>{
  
   
 
-  }
+  

@@ -4,7 +4,7 @@ import React, {useState, useEffect} from 'react';
 import { baseUrl , Url} from '../shared/baseUrl';
 
 import { connect, useDispatch} from 'react-redux';
-import {fetchProducts, addToCart, removeFromCart,fetchOrders, createOrders, clearOrders,fetchUsers , signin}  from '../redux/ActionCreators';
+import {fetchProducts, addToCart, removeFromCart,fetchOrders, createOrders, clearOrders,loadUser , signin}  from '../redux/ActionCreators';
 import ItemDetails from './CartItem';
 
 
@@ -22,7 +22,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = {
  signin:() =>(signin()),
-  fetchUsers: () => (fetchUsers()),
+ loadUser: () => (loadUser()),
 
   
 }
@@ -40,15 +40,15 @@ const SignIn = ({ login,  userSignin,products, cartItems, history, location}) =>
 
 
 
-  useEffect(() => {
+//   useEffect(() => {
     
-    const cart = cartItems.map(items => items.id)
-    // navigate("/signin?redirect=shipping");
-     if (userSignin) navigate(`/Items/`)
+//     const cart = cartItems.map(items => items.id)
+//     // navigate("/signin?redirect=shipping");
+//      if (userSignin) navigate(`/Items/`)
     
-    console.log('car',cart)
+//     console.log('car',cart)
    
-},[userSignin, navigate])
+// },[userSignin, navigate])
 
 
 const initialValues = {
@@ -70,8 +70,9 @@ const handleChange = (e) =>{
    
   // dispatch(fetchUsers(userData))
   dispatch(signin(userData))
+  navigate("/cart")
   console.log('token from signin', userSignin)
-  // console.log('user from signin',signIn)
+  
    
 
   }
@@ -108,7 +109,7 @@ const handleChange = (e) =>{
 
                
                     <div className="submit">
-                       <Link to='#'><input type="submit" value="Sign In" className="submit-button" onClick={handleSubmit}/></Link> 
+                       <button type="submit" className="submit-button" onClick={handleSubmit}>Sign In</button> 
                           
                     </div>
                      <p><Link to="/signup" className="forgot-password">Forgot Password?</Link></p>

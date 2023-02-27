@@ -48,65 +48,14 @@ shopRouter
 shopRouter
 .route("/:id")
 
-//   .get((req, res, next) => {
-//  Coffee.findOne({_id:req.params.id})
-//  .then(item =>{
 
-//   res.statusCode = 200;
-//   res.setHeader('Content-Type', 'application/json');
-//   res.json(item)
-//  })
-
-//  .catch((err) => next(err));
-// //  res.status(404).send({ message: 'Item Not Found.' });
-// })
-
-// shopRouter
-// .route("/:id")
-
-//   .get((req, res, next) => {
-//     // if (req.params.id.match(/^[0-9a-fA-F]{24}$/))
-//  Coffee.findById({id:req.params.id},
-//  (error, data) => {
-//   if(error) {
-//       return next(error)
-//   } else {
-//        res.json(data)
-      
-//   }
-//  })
-//})
-
-
-//   Coffee.findOne({ id: req.params.id })
-//   .then(item =>{
-//     console.log('shop route', item)
-//     res.send(item );
-//   })
-//     .catch((err) => next(err));
-  
-// })
-// .get((req, res, next) => {
-//   const coffee= Coffee.findOne({ id: req.params.id })
-    // .then((coffee => {
-     
-    //    JSON.parse(coffee),
-      // items: coffee
-      // stripePublicKey: stripePublicKey,
-    // res.json(coffee)
-//     console.log(coffee)
-     
-// })
-    
-//     .catch((err) => next(err));
-// })
-
+ 
 .get(async(req, res, next) => {
 
 const product = await Coffee.findOne({ 
   _id: req.params.id });
 
-if (product) {
+if (product ) {
   res.send(product);
  
 } else {
@@ -114,22 +63,36 @@ if (product) {
 }
 })
   
+// .get(async(req, res, next) => {
 
+//   const cart = await Cart.findOne({ 
+//     _id: req.params.id });
+//     const item = await User.findOne({ 
+//     _id: req.params.id });
+  
+//   if (item && item.cartItems.length>0) {
+//     res.send(product);
+   
+//   } else {
+//     res.status(404).send({ message: 'Product Not Found.' });
+//   }
+//   })
+    
 
 .post(async(req,res,next)=>{
   const {
-      product,
+     
       price,
-    
+    name,
       image,
       countInStock,
 } = req.body;
 
 
 const cart = await Cart.create({
-  product,
-  price,
  
+  price,
+ name,
   image,
   countInStock
 });

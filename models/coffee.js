@@ -5,9 +5,7 @@ require("mongoose-currency").loadType(mongoose);
 const Currency = mongoose.Types.Currency;
 
 const CoffeeSchema = new Schema({
-  // id:{
-  //   type: mongoose.Schema.Types.ObjectId,
-  // },
+
   name: {
     type: String,
     required: true,

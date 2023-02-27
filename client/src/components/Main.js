@@ -16,7 +16,7 @@ import Order from './Order';
 import Shipping from './Shipping';
 import Product from './Product';
 import { connect, useDispatch } from 'react-redux';
-import {fetchProducts, addToCart, removeFromCart,fetchOrders, createOrders, clearOrders,fetchUsers, signin }  from '../redux/ActionCreators';
+import {fetchProducts, addToCart, removeFromCart,fetchOrders, createOrders, clearOrders, signin, loadUser }  from '../redux/ActionCreators';
 // import {auth, getToken} from '../middleware/auth';
 // import '../config';
 
@@ -28,7 +28,8 @@ const mapStateToProps = state => {
       cartItems : state.cart.cartItems,
       orders: state.order.order,
    
-      userSignin: state.userSignin
+      userSignin: state.userSignin,
+      user:state.userSignin.user,
      
       
   }
@@ -41,13 +42,13 @@ const mapDispatchToProps = {
   fetchOrders:()=>(fetchOrders()),
   createOrders:(orders)=>(createOrders(orders)),
   clearOrders:(orders)=>(clearOrders(orders)),
-  fetchUsers: () => (fetchUsers()),
+loadUser: () => (loadUser()),
  signin: (userSignin) => (signin(userSignin)),
   
 }
 
 
-const  Main =( {products, cartItems, addToCart,removeFromCart,fetchOrders ,createOrders,clearOrders, orders, userSignin, login,userSignout})=> {
+const  Main =( {user, products, cartItems, addToCart,removeFromCart,fetchOrders ,createOrders,clearOrders, orders, userSignin, login,userSignout})=> {
 
 // const secret = config.get('jwtSecret')
 //  var token = window.localStorage.getItem(secret);
@@ -63,30 +64,36 @@ const  Main =( {products, cartItems, addToCart,removeFromCart,fetchOrders ,creat
 // const initialState = {
 //   userSignin :{userInfo}
 // }
-const {user} = userSignin;
+// const {user} = userSignin;
 
 const dispatch = useDispatch();
 
 
- useEffect(()=>{
-dispatch(fetchProducts(products))
-dispatch(fetchUsers())
-// dispatch(fetchOrders())
+
+
+// let userId  = user.id;
+// userId = useParams();
 
 
 
 
+useEffect(()=>{
+  dispatch(fetchProducts(products))
+  dispatch(loadUser())
+  // dispatch(fetchOrders())
+  
+  
+  
   
     
-
-console.log('token from main new',user)
-  console.log('ord from main' ,orders)
-// console.log('cartItems',cart)
-
-}, []);
-
-
- 
+      
+  
+  console.log('token from main new',user)
+    // console.log('use id from main' ,userId)
+  // console.log('cartItems',cart)
+  
+  }, []);
+  
 
 // const fetchData = async () =>{
 
@@ -164,7 +171,7 @@ console.log('token from main new',user)
     // const {userSignin, login, userInfo} = props
     <React.Fragment>
       {/* <Navbar  countCartItems={cartItems.length} cartItems={cartItems}/> */}
-        <Navbar userSignin={userSignin} userSignout={userSignout}  login={login} fetchUsers={fetchUsers} userInfo={user} />
+        <Navbar userSignin={userSignin} userSignout={userSignout}  login={login} loadUser={loadUser} userInfo={user} />
      
       <Routes>
           <Route exact path="/" element={<Home/>}/>
@@ -180,9 +187,14 @@ console.log('token from main new',user)
           clearOrders={clearOrders} 
           orders ={orders } />
               }/>
-          <Route exact path="/shop/:id" element={<CartItem  /> } />
+                {/* <Route exact path="/cart" element={<Cart /> }/> */}
+          {/* <Route exact path="/cart" element={<Cart  /> } /> */}
+        
+          {/* <Route exact path="/cart/:id" element={<Cart  /> } /> */}
           {/* cartItems={cartItems} addToCart={addToCart } products={products} */}
-          {/* <Route  path="/shop/:id" element={<Item cartItems={cartItems} products={products} />} /> */}
+         
+          <Route  path="/cart" element={<Cart cartItems={cartItems} products={products} />} />
+          {/* <Route  path={`/cart/:${userId}`} element={<Cart cartItems={cartItems} products={products} />} /> */}
          
           {/* <Route  path="/products" element={<Shop onAdd={onAdd} onRemove={onRemove} coffeeVarieties={coffeeVarieties} cartItems={cartItems}/>} />
           <Route  path="/products/:id" element={<Shop onAdd={onAdd} onRemove={onRemove} coffeeVarieties={coffeeVarieties} cartItems={cartItems}/>} /> */}
@@ -195,7 +207,7 @@ console.log('token from main new',user)
           <Route exact path="/signup" element={ <SignUp />}/>
           <Route exact path="/orders" element={ <Order/>}/>
           <Route exact path="/shipping" element={<Shipping/>} />
-          <Route exact path="/cart" element={<Cart /> }/>
+          {/* <Route exact path="/cart" element={<Cart /> }/> */}
 
 
 

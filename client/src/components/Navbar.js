@@ -1,7 +1,8 @@
 import React,{useState,useEffect} from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate , useParams} from "react-router-dom";
 import { connect, useDispatch } from 'react-redux';
-import {fetchProducts, addToCart, removeFromCart,fetchOrders, createOrders, clearOrders,fetchUsers,signin,userSignout }  from '../redux/ActionCreators';
+import {fetchProducts, addToCart, removeFromCart,fetchOrders, createOrders, clearOrders,signin,userSignout,loadUser  }  from '../redux/ActionCreators';
+import "../App.css";
 
 const mapStateToProps = state => {
  
@@ -10,8 +11,10 @@ const mapStateToProps = state => {
       cartItems : state.cart.cartItems,
       orders: state.order.order,
       login: state.login,
+      user:state.userSignin.user,
       userSignin: state.userSignin,
-      userSignout: state.userSignout
+      userSignout: state.userSignout,
+      isAuthenticated: state.userSignin.isAuthenticated,
      
       
   }
@@ -24,7 +27,7 @@ const mapDispatchToProps = {
   fetchOrders:()=>(fetchOrders()),
   createOrders:(orders)=>(createOrders(orders)),
   clearOrders:(orders)=>(clearOrders(orders)),
-  fetchUsers: () => (fetchUsers()),
+  loadUser: () => (loadUser()),
   signin: () => (signin())
 
   
@@ -32,7 +35,7 @@ const mapDispatchToProps = {
 
 
 
-const Navbar = ({countCartItems, cartItems, userSignin,login, userSignout}) => {
+const Navbar = ({countCartItems, cartItems, userSignin,login, userSignout, user, isAuthenticated}) => {
   const dispatch= useDispatch();
   const navigate= useNavigate();
 
@@ -41,13 +44,14 @@ const Navbar = ({countCartItems, cartItems, userSignin,login, userSignout}) => {
   useEffect(()=>{
       
       
-      dispatch(fetchUsers())
-        
+      dispatch(loadUser())
+        //  isAuthenticated ? navigate("/cart") : navigate ("/signin")
           
       
     
     console.log('navbar' ,userSignin)
-  // console.log('cartItems',cart)
+    console.log('navbar' ,user)
+  
   
   }, [])
 
@@ -58,7 +62,8 @@ const Navbar = ({countCartItems, cartItems, userSignin,login, userSignout}) => {
     }
  
   }
-  
+  // let userId  = user.id;
+// userId = useParams();
 
   // const handleLogout = () => {
   //   dispatch(logout());
@@ -131,26 +136,31 @@ const getCartCount = () => {
                   
                  </a>
 })} */}
+
+
+<>{cartItems ? null : <p>Your cart is empty!</p> } </>
           <Link to="/cart" role="button" id="loginButton">
-             Cart {' '}
-          
-               <span className="badge">{getCartCount()}</span>
+          <i className="fa fa-cart-plus">   <span className="badge cart-count f-5">{getCartCount()}</span></i>    {' '}
             
-            </Link >{' '}
-             {userSignin ? (
+          
+             
+            
+            </Link >{ ' '}
+            {isAuthenticated ? 
+            <>
                <a href="/profile" role="button" id="loginButton" >{""}
-               <i className="fa fa-sign-in"></i> {userSignin.fname}
+               <i className="fa fa-user"></i> {user.fname} {' '}
              </a>
 
-            )
-          : <a href="/signin" role="button" id="loginButton" >
+</>:  
+          <a href="/signin" role="button" id="loginButton" >
           <i className="fa fa-sign-in"></i> Sign In{" "} 
         </a>
-        }
-            
-           <a href="/signin" role="button" id="loginButton" >
-          <i className="fa fa-sign-in"></i> Sign In{" "} 
-        </a>
+
+            }      
+           {/* <a href="/signup" role="button" id="signupButton" >
+          <i className="fa fa-sign-in"></i> Sign Up{" "} 
+        </a> */}
 
          
            <a href="/logout" role="button" id="loginButton"  onClick={handleLogout}>

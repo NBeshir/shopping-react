@@ -5,6 +5,7 @@ export const FETCH_USERS = 'FETCH_USERS';
 export const PRODUCTS_LOADING = 'PRODUCTS_LOADING';
 export const PRODUCTS_FAILED = 'PRODUCTS_FAILED';
 export const ADD_CART_ITEMS = 'ADD_CART_ITEMS';
+export const GET_CART_ITEMS = 'GET_CART_ITEMS';
 
 export const ADJUST_QTY = 'ADJUST_QTY';
 export const LOAD_CURRENT_ITEM = 'LOAD_CURRENT_ITEM';
@@ -24,7 +25,13 @@ export const CLEAR_ORDER = 'CLEAR_ORDER';
 export const CLEAR_CART ='CLEAR_CART'
 export const AUTH="AUTH";
 export const ALERT = 'ALERT';
+export const AUTH_SUCCESS=" AUTH_SUCCESS";
+export const AUTH_FAIL="AUTH_FAIL";
+export const AUTH_ERROR = "AUTH_ERROR ";
 
+
+export const USER_LOADING = 'USER_LOADING';
+export const USER_LOADED = 'USER_LOADED';
 
 export const USER_SIGNIN_REQUEST = 'USER_SIGNIN_REQUEST';
 export const USER_SIGNIN_SUCCESS = 'USER_SIGNIN_SUCCESS';
@@ -37,5 +44,5 @@ export const USER_SIGNUP_FAIL = 'USER_SIGNUP_FAIL';
 // export const COMMENTS_FAILED = 'COMMENTS_FAILED';
 // export const ADD_COMMENT = 'ADD_COMMENT';
 
-export const USER_SIGN_OUT_SUCCESS = 'USER_SIGN_OUT_SUCCESS';
-export const USER_SIGN_OUT_FAIL = ' USER_SIGN_OUT_FAIL';
+export const USER_SIGNOUT_SUCCESS = 'USER_SIGN_OUT_SUCCESS';
+export const USER_SIGNOUT_FAIL = ' USER_SIGN_OUT_FAIL';

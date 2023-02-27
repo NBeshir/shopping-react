@@ -48,12 +48,12 @@ export const userSigninReducer= (state = {user:{}}, action)=> {
 
     switch (action.type) {
       
-      case ActionTypes.USER_SIGN_OUT_SUCCESS:
+      case ActionTypes.USER_SIGNOUT_SUCCESS:
         return { loading: false,
            user:null,
           isAuthenticated:false
         };
-        case ActionTypes.USER_SIGN_OUT_FAIL:
+        case ActionTypes.USER_SIGNOUT_FAIL:
         return {...state,
            loading: false,
           

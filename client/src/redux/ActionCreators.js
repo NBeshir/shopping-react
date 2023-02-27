@@ -20,6 +20,7 @@ export const fetchProducts = () => async (dispatch) => {
       type: ActionTypes.FETCH_PRODUCTS,
       payload: data
     })
+    // console.log('fetch data', data)
 
   }
   catch (errMess) {
@@ -37,6 +38,23 @@ export const productsLoading = (data) => ({
   payload: data
 
 });
+
+export const loadUser = () => (dispatch, getState) => {
+    // User loading
+    dispatch({ type: ActionTypes.USER_LOADING });
+
+    axios.get('/', tokenConfig(getState))
+        .then(res => dispatch({
+            type: ActionTypes.USER_LOADED,
+            payload: res.data
+        }))
+        .catch(err => {
+            // dispatch(returnErrors(err.response.data, err.response.status));
+            dispatch({
+                type: ActionTypes.AUTH_ERROR
+            });
+        });
+}
 
 // export const productsFailed = errMess => ({
 //     type: ActionTypes.PRODUCTS_FAILED,
@@ -122,32 +140,53 @@ export const clearOrders = () => (dispatch) => {
   dispatch({ type: ActionTypes.CLEAR_ORDER })
 }
 
-export const addToCart = (id, qty) => async (dispatch, getState) => {
-  const { data } = await axios.get(`http://localhost:5000/shop/${id}`)
-  // const cartItems = getState().cart.cartItems.slice()
-
-  // console.log('addtocart',id)
-  console.log('action data', data)
-
-
-  dispatch({
-    type: ActionTypes.ADD_CART_ITEMS,
-    payload: {
-      product: data._id,
-      productName: data.name,
-      price: data.price,
-      image: data.image,
-      countInStock: data.countInStock,
-
-      qty
+// export const getCart = (id) => dispatch => {
+//   // dispatch(setCartLoading());
+//   axios.get(`http://localhost:5000/cart/${id}`)
+//       .then(res => dispatch({
+//           type: ActionTypes.GET_CART_ITEMS,
+//           payload: res.data
+//       }))
+//       .catch(err => console.log(err));
+// }
 
 
-    }
+// export const addToCart = (id, productId, quantity) => async (dispatch, getState) => {
+// //  const {data} = await axios.get(`http://localhost:5000/cart/${id}`)
+//   await axios.post(`http://localhost:5000/cart/${id}`, {productId, quantity})
+  
+//   // console.log('action data', data)
 
-  })
-  localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
+//   .then(res => dispatch({
+//     type: ActionTypes.ADD_CART_ITEMS,
+//     payload: res.data
+// }))
+// .catch(err => console.log(err));
+// }
 
-}
+  
+
+
+//   dispatch({
+//     type: ActionTypes.ADD_CART_ITEMS,
+//     payload: {
+//       id: data._userId,
+     
+//       items:data.items,
+      
+    
+    
+//     total:data.total
+
+      
+
+
+//     },
+
+//  });
+  //localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
+
+
 
 
 
@@ -180,145 +219,121 @@ export const currentTotal = (item) => {
 
 
 
-//   export const addToCart =(productId) => async (dispatch, getState)=>{
+  export const addToCart =(userId, productId, qty) => async (dispatch, getState)=>{
 
-//  console.log('product Id', productId)
-//    try{
+    const {data} = await axios.get(`http://localhost:5000/shop/${productId}`)
+    // const {data} = await axios.get(`http://localhost:5000/cart/${userId}`)
+    console.log("data from add cart action", data, userId)
 
-//       const { data } = await axios.get("/shop/" + productId);
+   dispatch({
+    type: ActionTypes.ADD_CART_ITEMS, 
+    payload: {
+      userId:userId,
+      product: data._id,
+      name: data.name,
+      image: data.image,
+      price: data.price,
+      countInStock: data.countInStock,
+      qty
 
-//    dispatch({
-//     type: ActionTypes.ADD_CARTITEMS, payload: {
-//       product: data._id,
-//       name: data.name,
-//       image: data.image,
-//       price: data.price,
-//       countInStock: data.countInStock,
-
-//     }
-//   });
-
-//     const cartItems = getState().cart.cartItems.slice();
-//     localStorage.setItem("cartItems", JSON.stringify(cartItems));
-
-
-
-//  }
-
-
-//      catch (error) {
-//         dispatch(cartItemsFailed(error.message));
-//       }
-
-//     }
-
-
-// export const cartItemsLoading = (data) => ({
-//     type: ActionTypes.CARTITEMS_LOADING,
-//     payload: data
-
-// });
-// export const cartItemsFailed = errMess => ({
-//     type: ActionTypes.CARTITEMS_FAILED,
-//     payload: errMess
-// });
-
-// export const removeCartItems =(items)=> ({
-//     type: ActionTypes.REMOVE_FROM_CART,
-//     payload:items
-// });
-
-// export const addCartItems =(items, qty) => ({
-//     type: ActionTypes.ADD_CARTITEMS,
-
-//     payload: {
-//         product:items._id,
-//         name:items.name,
-//         image:items.image,
-//         price:items.price,
-//         countInStock:items.countInStock,
-//         qty
-
-//     }
-
-// });
-
-export const removeFromCart = (product) => async (dispatch, getState) => {
-  const cartItems = getState().cart.cartItems.slice().filter((x) => x._id !== product._id);
-
-  dispatch({ type: ActionTypes.REMOVE_FROM_CART, payload: { cartItems } });
-  localStorage.setItem("cartItems", JSON.stringify(cartItems));
-  // console.log('remove',cartItems)
-}
-
-//login users
-export const fetchUsers = (data) => async (dispatch) => {
-  try {
-    // dispatch({type :ActionTypes.ADD_PRODUCTS});
-    const res = await fetch(
-      Url + 'signin', {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-
-
-
-      },
-
-
-    })
-    console.log('user data', data)
-    const userData = await res.json()
-    if (userData.token) {
-      dispatch({
-        type: ActionTypes.AUTH,
-        payload: {
-          token: userData.token,
-          users: userData.user
-
-
-        }
-
-      })
-      console.log('token and user', userData)
-      console.log('token from login action', userData.token)
-      console.log('user from login action', userData.user)
-
-
-
-      localStorage.setItem('token', userData.token)
-      dispatch({
-        type: ActionTypes.ALERT,
-        payload: {
-          success: userData.msg
-        }
-      })
-      // alert('login successful');
-      // alert(userData.token);
-      //window.location.href = 'user/id';
     }
+  });
 
+  
+    localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
 
-
-
-
-
-
-
-  } catch (err) {
-    dispatch({
-      type: ActionTypes.ALERT,
-      payload: {
-        error: err.msg
-      }
-    })
 
   }
 
 
+
+export const removeFromCart = (id) => async (dispatch, getState) => {
+  
+
+  
+    dispatch({
+      type: ActionTypes.REMOVE_FROM_CART,
+      payload: id,
+    })
+  
+    localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems))
+  }
+
+
+
+// }
+export const register = ({name, email, password}) => dispatch => {
+    // headers
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+
+    //request body
+    const body = JSON.stringify({name, email, password});
+
+    axios.post('/api/register',body,config)
+        .then(res => dispatch({
+            type: ActionTypes.USER_SIGNUP_SUCCESS,
+            payload: res.data
+        }))
+        .catch(err => {
+            // dispatch(returnErrors(err.response.data, err.response.status, 'REGISTER_FAIL'));
+            dispatch({
+                type: ActionTypes.USER_SIGNUP_FAIL
+            });
+        });
 }
 
+export const login = ({email, password}) => dispatch => {
+  // headers
+  const config = {
+      headers: {
+          'Content-Type': 'application/json'
+      }
+  }
+
+  //request body
+  const body = JSON.stringify({email, password});
+
+  axios.post('/login',body,config)
+      .then(res => dispatch({
+          type: ActionTypes.USER_SIGNIN_SUCCESS,
+          payload: res.data
+      }))
+      .catch(err => {
+          // dispatch(returnErrors(err.response.data, err.response.status, 'LOGIN_FAIL'));
+          dispatch({
+              type:ActionTypes.USER_SIGNIN_FAIL
+          });
+      });
+}
+// logout user
+export const logout = () => {
+  return {
+      type: ActionTypes.USER_SIGNOUT_SUCCESS
+  }
+}
+
+// Setup config/headers and token
+export const tokenConfig = getState => {
+  //Get token from local storage
+  const token = getState().auth.token;
+
+  // Headers
+  const config = {
+      headers:{
+          "Content-type": "application/json",
+      }
+  }
+
+  if(token){
+      config.headers['x-auth-token'] = token;
+  }
+
+  return config;
+}
 
 export const signin = (userData) => async (dispatch) => {
   // dispatch({ type:  ActionTypes.USER_SIGNIN_REQUEST, payload: { userData} });
@@ -384,7 +399,7 @@ export const signUp = (userData) => async (dispatch) => {
 
 export const userSignout = () => async (dispatch) => {
   localStorage.removeItem('userInfo')
-  dispatch({ type: ActionTypes.USER_SIGN_OUT_SUCCESS });
+  dispatch({ type: ActionTypes.USER_SIGNOUT_SUCCESS });
 }
 
 

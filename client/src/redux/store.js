@@ -3,13 +3,15 @@ import {configureStore} from '@reduxjs/toolkit';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import {Products,productDetailsReducer} from './ProductsReducer';
-import {cartItems, quantity} from './CartItemsReducer';
+import {cartItems} from './CartItemsReducer';
 import {Orders} from './OrderReducer';
-import {Login} from './SigninReducer';
+// import {usersReducer} from './usersReducer';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import {userSigninReducer, userSignupReducer,userSignoutReducer} from './usersReducer'
+import {auth} from './authReducer'
 
 import Cookie from 'js-cookie';
+
 // import {Users} from './users';
 
 
@@ -26,7 +28,8 @@ const reducers = combineReducers({
     cart: cartItems,
  
     order: Orders,
- //    login:Login,
+ 
+   auth:auth,
     userSignin: userSigninReducer,
     userSignup: userSignupReducer,
     userSignout: userSignoutReducer,
@@ -34,23 +37,23 @@ const reducers = combineReducers({
 
 })
 
-let initialState = {
+// let initialState = {
 
-    cart: { cartItems: localStorage.getItem("cartItems") 
-    ? JSON.parse(localStorage.getItem("cartItems")) :[],
-    shippingInfo: localStorage.getItem("shippingInfo") 
-    ? JSON.parse(localStorage.getItem("shippingInfo")) :{},
+//     cart: { cartItems: localStorage.getItem("cartItems") 
+//     ? JSON.parse(localStorage.getItem("cartItems")) :[],
+//     shippingInfo: localStorage.getItem("shippingInfo") 
+//     ? JSON.parse(localStorage.getItem("shippingInfo")) :{},
     
 
     
-}
-};
+// }
+// };
 // const middleware = [thunk, logger];
 
  
  const store = configureStore(
     {reducer:reducers},
-    initialState,
+    // initialState,
  
   
     //applyMiddleware(thunk)

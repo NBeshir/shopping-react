@@ -1,14 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import SignIn from './SignIn';
 import CartItem from './CartItem';
-import CartSummary from './CartSummary';
 import { connect, useDispatch} from 'react-redux';
-
 import {addToCart, removeFromCart,fetchOrders, createOrders, clearOrders}  from '../redux/ActionCreators';
 import "../App.css";
 
 
-const Cart =({cartItems, products, isAuthenticated,user, loading})=> {
+const CartSummary =({cartItems, products, isAuthenticated,user, loading})=> {
 
   // const itemsPrice = cartItems.reduce((a, c) => a + c.countInStock * c.price, 0);
   // const taxPrice = itemsPrice * 0.14;
@@ -59,31 +57,24 @@ const Cart =({cartItems, products, isAuthenticated,user, loading})=> {
 
   return (
   
-    <div className="cart-container w-75 m-3 mx-auto ">
-      {cartItems.length  > 0  && isAuthenticated ?
-      <>
-        <div className="cart-items">
-         
-            {cartItems.map((item)=>(
-                //  <CartItem/>
-                  <CartItem key={item.id} itemData={item}/> 
-                
-            ))}
-          
-          
-        </div> 
-        
-        
+    
+         <div className="cart-total mt-5 ">
+            <h1>Cart Summary</h1>
+            <div className="cart-data">
+                <span>Subtotal({getCartCount()} items):</span>
+                <span className="m-2">$ {getCartSubTotal()/10000}</span>
+            </div>
+            <div className=' mx-auto p2'>
+                <button className="cart-btn">
+                  Proceed to checkout
+                </button>
+            </div>
            
-     <CartSummary />
-        </>
-        : <><p className="login-cart">please log in</p>
-        <SignIn/>
-        </>
+        </div>
+      
        
-            }
-        
-     </div>
+            
+  
 
   )
 }
@@ -116,4 +107,4 @@ const mapStateToProps = state => {
     
     }
   }
-export default connect(mapStateToProps, mapDispatchToProps)(Cart);
+export default connect(mapStateToProps, mapDispatchToProps)(CartSummary);

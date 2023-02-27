@@ -24,19 +24,19 @@ router.get('/', (req,res, next)=>{
 
 
 router.post('/',
-[
-    check('fname', "Please add your first name").not().isEmpty(),
-    check('lname', "Please add your last name").not().isEmpty(),
-    check('email', "Please include a valid email").isEmail(),
-    check('password', "Please include a password with 6 or more characters").isLength({min: 6})
-], async (req,res)=>{
+    [
+        check('fname', "Please add your first name").not().isEmpty(),
+        check('lname', "Please add your last name").not().isEmpty(),
+        check('email', "Please include a valid email").isEmail(),
+        check('password', "Please include a password with 6 or more characters").isLength({min: 6})
+    ], async (req,res)=>{
 
     const errors = validationResult(req);
    
     if(!errors.isEmpty()){
         return res.status(400).json({errors:errors.array()});
     } 
-    try{
+    // try{
     const {fname,lname, email, password} = req.body;
    
       let user = await User.findOne({email})
@@ -50,13 +50,39 @@ router.post('/',
         //  lname:lname,
         //  email:email,
         // password: hashedPassword
-     user = await User.create({
-            fname,
-            lname,
-            email,
-           password: hashedPassword
+        user = await User.create({
+                fname,
+                lname,
+                email,
+            password: hashedPassword
+        
+            })
+        .then(user =>{
+            jwt.sign(
+                    {id:user._id},
+                    config.get('jwtSecret'),
+                    (err, token)=>{
+                        if(err) throw err;
+                    
+                
+                        res.status(200).json({
+                            msg:"Successfully Registered!",
+                            token,
+                            user: {
+                                id:user._id,
+                                fname:user.fname,
+                                lname:user.lname,
+                                email:user.email,
+                            }
+                        })
+                    }  
+                ) 
+
+         })
+  
+    })
     
-})
+
 // const savedUser = await newUser.save()
 // const token = jwt.sign(
 //     {id:savedUser._id},
@@ -73,17 +99,16 @@ router.post('/',
 //         }
 //     })
     
-getToken(user)
-
-}
+// getToken(user)
 
 
-catch(err){
-    res.status(400).json({ error: err.message });
-}
+
+// catch(err){
+//     res.status(400).json({ error: err.message });
+// }
 
 
-})
+// })
 
 
 
